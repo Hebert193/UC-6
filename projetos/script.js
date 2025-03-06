@@ -37,3 +37,14 @@ function atualizarInfo() {
         infoElementos[i].innerText = `Vaga ${i + 1}: ${totalHoras[i]}h`
     }
 }
+
+function totalizar() {
+    let totalHorasDia = 0;
+    
+    for(let i = 0; i < 10; i++) {
+        totalHorasDia += totalHoras[i];        
+    }
+
+    let faturamento = totalHorasDia * 12;
+    resultadoTexto.innerText = `Total de horas: ${totalHorasDia}, Carros Atendidos: ${totalCarros}, Faturamento: R$${faturamento},00`;
+}
