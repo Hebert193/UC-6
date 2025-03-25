@@ -24,4 +24,8 @@ deepStrictEqual(pessoasOrdenadas.map(p => p.nome), resultadoEsperado, "❌ Erro 
 let objetoResultado = buscaBinaria(pessoasOrdenadas, "Ana");
 strictEqual(objetoResultado.nome, "Ana", "❌ Erro na busca binária (nome não existente)");
 
+// Teste 3: Busca Binária (Nome não existente)
+let resultadoNulo = buscaBinaria(pessoasOrdenadas, "Lucas");
+strictEqual(resultadoNulo, -1, "❌ Erro na busca binária (retorno incorreto)");
+
 console.log("✅ Todos os testes passaram!")
