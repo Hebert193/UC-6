@@ -27,10 +27,6 @@ export class Produto {
         return mensagem;
     }
 
-    getId() {
-        return this.#id;
-    }
-
     estaProximoDaValidade() {
         const hoje = new Date();
         const diff = (this.#validade - hoje) / (1000 * 60 * 60 * 24);
@@ -49,7 +45,18 @@ export class Produto {
         return maxId + 1;
     }
 
-    static fromJSON(json){
+    atualizarDados(novoNome, novoPreco, novoPeso, novaValidade) {
+        if(!novoNome || isNaN(novoPreco) || isNaN(novoPeso) || !novaValidade) {
+            throw new Error("Dados inválidos para atualização");
+        }
+
+        this.#nome = novoNome;
+        this.#preco = novoPreco;
+        this.#peso = novoPeso;
+        this.#validade = novaValidade;
+    }
+
+    static fromJSON(json) {
         const produto = new Produto(json.nome, json.preco, json.peso, json.validade);
         produto.#id = json.id;
         return produto;
